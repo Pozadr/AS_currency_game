@@ -6,6 +6,7 @@ public class GameStatus {
     private String message;
     private Double randomToPlnRate;
     private Currency randomCurrency;
+    private boolean winner;
 
     public String getMessage() {
         return message;
@@ -37,5 +38,13 @@ public class GameStatus {
 
     public void setRandomCurrency(Currency randomCurrency) {
         this.randomCurrency = randomCurrency;
+    }
+
+    public boolean isWinner() {
+        return winner;
+    }
+
+    public void setWinner(boolean winner) {
+        this.winner = winner;
     }
 }

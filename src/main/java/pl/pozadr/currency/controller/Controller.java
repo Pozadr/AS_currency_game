@@ -31,7 +31,12 @@ public class Controller {
         currencyService.checkAnswer(userInput);
         return "redirect:/currency";
     }
-    
+
+    @GetMapping("/new-game")
+    public String getNewGame() {
+        currencyService.setStartingGameStatus();
+        return "redirect:/currency";
+    }
 
 
 }

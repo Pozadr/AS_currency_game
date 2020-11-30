@@ -4,41 +4,17 @@ body {
 
 }
 
-.currency-div {
-    margin: 0 auto;
-    width: 500px;
-    border: 1px solid #444;
-    border-radius: 10px;
-}
-
 h1 {
     text-align: center;
     margin-bottom: 15px;
     margin-top: 15px;
 }
 
-.currency-icon {
-    width: 200px;
-}
-
-.currency-img-p {
-    text-align: center;
-}
-
-.currency-city {
-    width: 100%;
-    text-align: center;
-    font-size: 40px;
-    margin-bottom: 15px;
-    margin-top: 15px;
-}
-
-.currency-state {
-    width: 100%;
-    text-align: center;
-    font-size: 32px;
-    margin-bottom: 15px;
-    margin-top: 15px;
+.currency-div {
+    margin: 0 auto;
+    width: 500px;
+    border: 1px solid #444;
+    border-radius: 10px;
 }
 
 .currency-description {
@@ -49,30 +25,12 @@ h1 {
     text-align: center;
 }
 
-.currency-link {
-    font-size: 20px;
-    margin-bottom: 5px;
-    margin-top: 5px;
-    margin-left: 5px;
-    text-align: center;
-}
-
-.currency-error-text {
-    width: 100%;
-    text-align: center;
-    font-weight: bold;
-    font-size: 40px;
-    margin-bottom: 15px;
-    margin-top: 15px;
-}
-
 .form-p {
     text-align: center;
 }
 
 .currency-form-div {
     text-align: center;
-    padding-bottom: 10px;
 }
 
 .currency-input-text {

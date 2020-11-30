@@ -28,7 +28,6 @@ public class CurrencyService {
 
         this.gameStatus = new GameStatus();
         setStartingGameStatus();
-
     }
 
     public void checkAnswer(UserInput userInput) {
@@ -39,12 +38,13 @@ public class CurrencyService {
 
             if (inputDouble.equals(rateToGuess)) {
                 gameStatus.setMessage("Congratulations! You won!");
+                gameStatus.setWinner(true);
             } else if (inputDouble > rateToGuess) {
                 gameStatus.setMessage("Too much. Try again!");
             } else {
                 gameStatus.setMessage("Too little! Try again!");
             }
-        } catch (ArithmeticException ex) {
+        } catch (NumberFormatException ex) {
             System.out.println(ex.getMessage());
             gameStatus.setMessage("Wrong input! Type number!");
         }
@@ -74,7 +74,8 @@ public class CurrencyService {
         return gameStatus;
     }
 
-    private void setStartingGameStatus() {
+    public void setStartingGameStatus() {
+        gameStatus.setWinner(false);
         gameStatus.setRandomCurrency(getRandomCurrency());
         gameStatus.setRandomToPlnRate(getRandomToPlnRate(gameStatus.getRandomCurrency()));
         gameStatus.setMessage("Let's START!");
