@@ -68,7 +68,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 public class ConversionRates {
 
     @JsonProperty("USD")
-    private Integer uSD;
+    private Double uSD;
     @JsonProperty("AED")
     private Double aED;
     @JsonProperty("ARS")
@@ -175,12 +175,12 @@ public class ConversionRates {
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     @JsonProperty("USD")
-    public Integer getUSD() {
+    public Double getUSD() {
         return uSD;
     }
 
     @JsonProperty("USD")
-    public void setUSD(Integer uSD) {
+    public void setUSD(Double uSD) {
         this.uSD = uSD;
     }
 

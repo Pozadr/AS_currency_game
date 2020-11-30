@@ -1,6 +1,6 @@
 package pl.pozadr.currency.model;
 
-public enum Currencies {
+public enum Currency {
     USD,
     AED,
     ARS,
@@ -53,4 +53,5 @@ public enum Currencies {
     UAH,
     UYU,
     ZAR;
+
 }
