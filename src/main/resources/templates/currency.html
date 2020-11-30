@@ -2,15 +2,23 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
+    <link th:href="@{/styles/main.css}" rel="stylesheet"/>
     <title>Title</title>
 </head>
 <body>
 
-<div class="weather-div">
+<div class="currency-div">
     <h1>Currency rates game</h1>
+    <h3>Guess currency rate:</h3>
     <div class="currency-div">
-        <p th:text="${currencies}"></p>
-
+        <form th:action="@{/get-answer}" th:object="${userInput}" th:method="get">
+            <label>
+                <input class="currency-input-text" name="guess-currency-rate" type="text"
+                       placeholder="Type the city" th:field="*{input}">
+            </label>
+            <input class="currency-input-submit" name="guess-currency-rate-submit" type="submit" value="Confirm">
+        </form>
+    <p th:text=""></p>
     </div>
 </div>
 
