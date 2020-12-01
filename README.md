@@ -7,6 +7,7 @@ Simple game to guess random currency exchange ratio downloaded from [remote API]
 ## Technologies
 
 - Java 11
+- Maven
 - Spring Boot 2.4.0
 - Thymeleaf - UI
 
