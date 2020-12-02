@@ -1,5 +1,8 @@
 package pl.pozadr.currency.service;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import pl.pozadr.currency.controller.thymeleaf.UserInput;
@@ -11,15 +14,18 @@ import java.util.*;
 
 @Service
 public class CurrencyService {
-    private final ConversionRates currencyRates;
-    private final Map<Currency, Double> currencyMap;
-    private final GameStatus gameStatus;
+    private ConversionRates currencyRates;
+    private Map<Currency, Double> currencyMap;
+    private GameStatus gameStatus;
+    @Value("${url-code}")
+    private String urlUniqueCode;
 
-
-    public CurrencyService() {
+    @EventListener(ApplicationReadyEvent.class)
+    public void initApplication() {
+        String urlSb = "https://v6.exchangerate-api.com/v6/" +
+                urlUniqueCode + "/latest/usd";
         RestTemplate restTemplateCity = new RestTemplate();
-        CurrencyLive currencyLive = restTemplateCity.getForObject(
-                "https://v6.exchangerate-api.com/v6/d90a998ff31d1856e56cdccf/latest/usd", CurrencyLive.class);
+        CurrencyLive currencyLive = restTemplateCity.getForObject(urlSb, CurrencyLive.class);
 
         assert currencyLive != null;
         currencyRates = currencyLive.getConversionRates();
@@ -29,6 +35,15 @@ public class CurrencyService {
         this.gameStatus = new GameStatus();
         setStartingGameStatus();
     }
+
+
+    public void setStartingGameStatus() {
+        gameStatus.setWinner(false);
+        gameStatus.setRandomCurrency(getRandomCurrency());
+        gameStatus.setRandomToPlnRate(getRandomToPlnRate(gameStatus.getRandomCurrency()));
+        gameStatus.setMessage("Let's START!");
+    }
+
 
     public void checkAnswer(UserInput userInput) {
         try {
@@ -50,6 +65,7 @@ public class CurrencyService {
         }
     }
 
+
     public Double getRandomToPlnRate(Currency random) {
         Double randomRate = currencyMap.get(random);
         Double plnRate = currencyMap.get(Currency.PLN);
@@ -70,16 +86,11 @@ public class CurrencyService {
         return (Currency) key;
     }
 
+
     public GameStatus getGameStatus() {
         return gameStatus;
     }
 
-    public void setStartingGameStatus() {
-        gameStatus.setWinner(false);
-        gameStatus.setRandomCurrency(getRandomCurrency());
-        gameStatus.setRandomToPlnRate(getRandomToPlnRate(gameStatus.getRandomCurrency()));
-        gameStatus.setMessage("Let's START!");
-    }
 
     private void setCurrencyMap(Map<Currency, Double> currencyMap) {
         currencyMap.put(Currency.AED, currencyRates.getAED());
@@ -134,6 +145,5 @@ public class CurrencyService {
         currencyMap.put(Currency.USD, currencyRates.getUSD());
         currencyMap.put(Currency.UYU, currencyRates.getUYU());
         currencyMap.put(Currency.ZAR, currencyRates.getZAR());
-
     }
 }
