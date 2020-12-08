@@ -1,4 +1,4 @@
-package pl.pozadr.currency.model.game;
+package pl.pozadr.currency.game;
 
 import org.springframework.stereotype.Component;
 import pl.pozadr.currency.model.currency.Currency;
@@ -20,10 +20,6 @@ public class GameStatus {
 
     public Double getRandomToPlnRate() {
         return randomToPlnRate;
-    }
-
-    public String getRandomToPlnRateString() {
-        return randomToPlnRate.toString();
     }
 
     public void setRandomToPlnRate(Double randomToPlnRate) {
