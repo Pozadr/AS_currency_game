@@ -1,5 +1,5 @@
 
-package pl.pozadr.currency.model;
+package pl.pozadr.currency.model.currency;
 
 import java.util.HashMap;
 import java.util.Map;

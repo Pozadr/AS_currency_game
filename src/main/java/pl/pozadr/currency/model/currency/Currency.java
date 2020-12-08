@@ -1,4 +1,4 @@
-package pl.pozadr.currency.model;
+package pl.pozadr.currency.model.currency;
 
 public enum Currency {
     USD,

@@ -1,7 +1,9 @@
-package pl.pozadr.currency.service;
+package pl.pozadr.currency.model.game;
 
-import pl.pozadr.currency.model.Currency;
+import org.springframework.stereotype.Component;
+import pl.pozadr.currency.model.currency.Currency;
 
+@Component
 public class GameStatus {
     private String message;
     private Double randomToPlnRate;

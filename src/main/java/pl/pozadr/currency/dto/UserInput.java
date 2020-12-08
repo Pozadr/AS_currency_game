@@ -1,4 +1,4 @@
-package pl.pozadr.currency.controller.thymeleaf;
+package pl.pozadr.currency.dto;
 
 public class UserInput {
     private String input;
